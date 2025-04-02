@@ -36,13 +36,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -50,7 +49,21 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-datadog</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -66,6 +79,31 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			 <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>1.2.1</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>build</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <imageName>course-service</imageName> <!-- The name of the Docker image -->
+                <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory> <!-- Directory containing the Dockerfile -->
+                <resources>
+                    <resource>
+                        <targetPath>/</targetPath>
+                        <directory>${project.build.directory}</directory>
+                        <includes>
+                            <include>*.jar</include> <!-- Include the JAR file -->
+                        </includes>
+                    </resource>
+                </resources>
+            </configuration>
+        </plugin>
 		</plugins>
 	</build>
 

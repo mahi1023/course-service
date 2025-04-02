@@ -54,9 +54,9 @@ public class CourseController {
 	        if (course.isPresent()) {
 	            String message = studentName + " enrolled in course " + courseId;
 	            kafkaProducer.sendEnrollmentMessage(message);
-	            return ResponseEntity.ok("✅ Enrollment message sent for course: " + courseId);
+	            return ResponseEntity.ok(" Enrollment message sent for course: " + courseId);
 	        } else {
-	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("❌ Course with ID " + courseId + " not found!");
+	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(" Course with ID " + courseId + " not found!");
 	        }
 	    }
 	
