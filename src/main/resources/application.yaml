@@ -1,9 +1,9 @@
 spring:
   server:
-    port: 8080  # The course service will run on this port
+    port: 8087  # The course service will run on this port
   
   datasource:
-    url: jdbc:postgresql://localhost:5432/learning  
+    url: jdbc:postgresql://localhost:5433/learning  
     username: postgres  
     password: root  
     driver-class-name: org.postgresql.Driver
@@ -20,7 +20,7 @@ spring:
     consumer:
       group-id: course-group  
     producer:
-      bootstrap-servers: kafka:9092 
+      bootstrap-servers: 20.42.58.254:9092 
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer 
 
