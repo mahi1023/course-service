@@ -3,9 +3,9 @@ spring:
     port: 8080  # The course service will run on this port
   
   datasource:
-    url: jdbc:postgresql://localhost:5432/learning  # Your Postgres DB
-    username: postgres  # DB username
-    password: root  # DB password
+    url: jdbc:postgresql://localhost:5432/learning  
+    username: postgres  
+    password: root  
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
